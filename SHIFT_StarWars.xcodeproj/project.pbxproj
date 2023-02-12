@@ -71,7 +71,7 @@
 		4946417F2986FBF90028B895 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		4951BFED2986EA20001DF3F7 /* StartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewModel.swift; sourceTree = "<group>"; };
 		4957C046298CD63300F01F77 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
-		4960D63F2986A5080064E1C3 /* SHIFT_Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SHIFT_Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4960D63F2986A5080064E1C3 /* SHIFT_StarWars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SHIFT_StarWars.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4960D6422986A5080064E1C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4960D6442986A5080064E1C3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		4960D6462986A5080064E1C3 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
@@ -195,7 +195,7 @@
 		4960D6362986A5080064E1C3 = {
 			isa = PBXGroup;
 			children = (
-				4960D6412986A5080064E1C3 /* SHIFT_Project */,
+				4960D6412986A5080064E1C3 /* SHIFT_StarWars */,
 				4960D6402986A5080064E1C3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -203,12 +203,12 @@
 		4960D6402986A5080064E1C3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4960D63F2986A5080064E1C3 /* SHIFT_Project.app */,
+				4960D63F2986A5080064E1C3 /* SHIFT_StarWars.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4960D6412986A5080064E1C3 /* SHIFT_Project */ = {
+		4960D6412986A5080064E1C3 /* SHIFT_StarWars */ = {
 			isa = PBXGroup;
 			children = (
 				49FD9614298A52A50070904A /* Network */,
@@ -220,7 +220,7 @@
 				4960D64B2986A50A0064E1C3 /* Assets.xcassets */,
 				4960D6502986A50A0064E1C3 /* Info.plist */,
 			);
-			path = SHIFT_Project;
+			path = SHIFT_StarWars;
 			sourceTree = "<group>";
 		};
 		4960D6592986C0910064E1C3 /* Scenes */ = {
@@ -323,9 +323,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4960D63E2986A5080064E1C3 /* SHIFT_Project */ = {
+		4960D63E2986A5080064E1C3 /* SHIFT_StarWars */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4960D6532986A50A0064E1C3 /* Build configuration list for PBXNativeTarget "SHIFT_Project" */;
+			buildConfigurationList = 4960D6532986A50A0064E1C3 /* Build configuration list for PBXNativeTarget "SHIFT_StarWars" */;
 			buildPhases = (
 				4960D63B2986A5080064E1C3 /* Sources */,
 				4960D63C2986A5080064E1C3 /* Frameworks */,
@@ -335,13 +335,13 @@
 			);
 			dependencies = (
 			);
-			name = SHIFT_Project;
+			name = SHIFT_StarWars;
 			packageProductDependencies = (
 				4960D6572986BF170064E1C3 /* SnapKit */,
 				49FD9618298A55640070904A /* Alamofire */,
 			);
 			productName = SHIFT_Project;
-			productReference = 4960D63F2986A5080064E1C3 /* SHIFT_Project.app */;
+			productReference = 4960D63F2986A5080064E1C3 /* SHIFT_StarWars.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -359,7 +359,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4960D63A2986A5080064E1C3 /* Build configuration list for PBXProject "SHIFT_Project" */;
+			buildConfigurationList = 4960D63A2986A5080064E1C3 /* Build configuration list for PBXProject "SHIFT_StarWars" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -377,7 +377,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4960D63E2986A5080064E1C3 /* SHIFT_Project */,
+				4960D63E2986A5080064E1C3 /* SHIFT_StarWars */,
 			);
 		};
 /* End PBXProject section */
@@ -578,8 +578,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9KT4MKX52L;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SHIFT_Project/Info.plist;
+				INFOPLIST_FILE = SHIFT_StarWars/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = StarWars;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -589,7 +590,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "sem.SHIFT-Project";
+				PRODUCT_BUNDLE_IDENTIFIER = "sem.SHIFT-StarWars";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -606,8 +607,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9KT4MKX52L;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SHIFT_Project/Info.plist;
+				INFOPLIST_FILE = SHIFT_StarWars/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = StarWars;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -617,7 +619,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "sem.SHIFT-Project";
+				PRODUCT_BUNDLE_IDENTIFIER = "sem.SHIFT-StarWars";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -628,7 +630,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4960D63A2986A5080064E1C3 /* Build configuration list for PBXProject "SHIFT_Project" */ = {
+		4960D63A2986A5080064E1C3 /* Build configuration list for PBXProject "SHIFT_StarWars" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4960D6512986A50A0064E1C3 /* Debug */,
@@ -637,7 +639,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4960D6532986A50A0064E1C3 /* Build configuration list for PBXNativeTarget "SHIFT_Project" */ = {
+		4960D6532986A50A0064E1C3 /* Build configuration list for PBXNativeTarget "SHIFT_StarWars" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4960D6542986A50A0064E1C3 /* Debug */,

@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4960D63E2986A5080064E1C3"
-               BuildableName = "SHIFT_Project.app"
-               BlueprintName = "SHIFT_Project"
-               ReferencedContainer = "container:SHIFT_Project.xcodeproj">
+               BuildableName = "SHIFT_StarWars.app"
+               BlueprintName = "SHIFT_StarWars"
+               ReferencedContainer = "container:SHIFT_StarWars.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,9 +46,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4960D63E2986A5080064E1C3"
-            BuildableName = "SHIFT_Project.app"
-            BlueprintName = "SHIFT_Project"
-            ReferencedContainer = "container:SHIFT_Project.xcodeproj">
+            BuildableName = "SHIFT_StarWars.app"
+            BlueprintName = "SHIFT_StarWars"
+            ReferencedContainer = "container:SHIFT_StarWars.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -63,9 +63,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4960D63E2986A5080064E1C3"
-            BuildableName = "SHIFT_Project.app"
-            BlueprintName = "SHIFT_Project"
-            ReferencedContainer = "container:SHIFT_Project.xcodeproj">
+            BuildableName = "SHIFT_StarWars.app"
+            BlueprintName = "SHIFT_StarWars"
+            ReferencedContainer = "container:SHIFT_StarWars.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
