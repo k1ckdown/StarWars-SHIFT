@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "Storm IV Twin-Pod cloud car.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "Storm IV Twin-Pod cloud car 2.jpg",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "Storm IV Twin-Pod cloud car 1.jpg",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
