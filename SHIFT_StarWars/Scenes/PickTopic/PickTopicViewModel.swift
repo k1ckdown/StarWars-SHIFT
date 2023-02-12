@@ -1,6 +1,6 @@
 //
 //  PickTopicViewModel.swift
-//  SHIFT_Project
+//  SHIFT_StarWars
 //
 //  Created by Ivan Semenov on 29.01.2023.
 //

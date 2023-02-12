@@ -1,6 +1,6 @@
 //
 //  ContentLayout.swift
-//  SHIFT_Project
+//  SHIFT_StarWars
 //
 //  Created by Ivan Semenov on 02.02.2023.
 //

@@ -1,6 +1,6 @@
 //
 //  People.swift
-//  SHIFT_Project
+//  SHIFT_StarWars
 //
 //  Created by Ivan Semenov on 04.02.2023.
 //

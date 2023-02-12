@@ -1,6 +1,6 @@
 //
 //  APIManager.swift
-//  SHIFT_Project
+//  SHIFT_StarWars
 //
 //  Created by Ivan Semenov on 01.02.2023.
 //
