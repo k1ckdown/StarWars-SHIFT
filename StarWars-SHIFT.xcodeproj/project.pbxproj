@@ -156,7 +156,7 @@
 			path = ShowTopic;
 			sourceTree = "<group>";
 		};
-		492A319B29B3217D00D6A6C6 /* img */ = {
+		492A31A429B321CF00D6A6C6 /* img */ = {
 			isa = PBXGroup;
 			children = (
 				492A319E29B3218600D6A6C6 /* IMG_3116.PNG */,
@@ -219,7 +219,7 @@
 		4960D6362986A5080064E1C3 = {
 			isa = PBXGroup;
 			children = (
-				492A319B29B3217D00D6A6C6 /* img */,
+				492A31A429B321CF00D6A6C6 /* img */,
 				492A315D29B31D1400D6A6C6 /* README.md */,
 				4960D6412986A5080064E1C3 /* StarWars-SHIFT */,
 				4960D6402986A5080064E1C3 /* Products */,
