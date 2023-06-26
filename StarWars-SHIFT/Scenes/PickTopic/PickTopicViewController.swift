@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PickTopicViewController: UIViewController {
+final class PickTopicViewController: UIViewController {
     
     // MARK: - Private properties
 
@@ -19,17 +19,14 @@ class PickTopicViewController: UIViewController {
         return collectionView
     }()
     
-    private let dataSource: TopicCollectionDataSource
-    private let delegate: TopicCollectionDelegate
-
     private let viewModel: PickTopicViewModel
+    private let dataSource: PickTopicDataSource
     
     // MARK: - Inits
     
     init(viewModel: PickTopicViewModel) {
         self.viewModel = viewModel
-        dataSource = TopicCollectionDataSource(viewModel: viewModel)
-        delegate = TopicCollectionDelegate(viewModel: viewModel)
+        dataSource = .init(viewModel: viewModel)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -43,6 +40,7 @@ class PickTopicViewController: UIViewController {
         super.viewDidLoad()
         
         setup()
+        dataSource.configure(with: topicCollection)
         bindToViewModel()
     }
     
@@ -66,11 +64,8 @@ class PickTopicViewController: UIViewController {
     private func setupTopicCollection() {
         view.addSubview(topicCollection)
         
-        topicCollection.register(TopicViewCell.self, forCellWithReuseIdentifier: TopicViewCell.identifier)
-        topicCollection.dataSource = dataSource
-        topicCollection.delegate = delegate
-        topicCollection.showsVerticalScrollIndicator = false
         topicCollection.backgroundColor = .clear
+        topicCollection.showsVerticalScrollIndicator = false
         
         topicCollection.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
@@ -87,7 +82,7 @@ class PickTopicViewController: UIViewController {
 // MARK: - Building ViewModel
 
 private extension PickTopicViewController {
-    private func bindToViewModel() {
+    func bindToViewModel() {
         viewModel.goToShowTopicScreen = { [weak self] viewController in
             self?.navigationController?.pushViewController(viewController, animated: true)
         }

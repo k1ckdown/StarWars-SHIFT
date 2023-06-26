@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StartScreenViewController: UIViewController {
+final class StartScreenViewController: UIViewController {
     
     // MARK: - Private properties
     
@@ -119,7 +119,7 @@ class StartScreenViewController: UIViewController {
 // MARK: - Building ViewModel
 
 private extension StartScreenViewController {
-    private func bindToViewModel() {
+    func bindToViewModel() {
         viewModel.goToShowTopicScreen = { [weak self] viewController in
             self?.navigationController?.pushViewController(viewController, animated: true)
         }

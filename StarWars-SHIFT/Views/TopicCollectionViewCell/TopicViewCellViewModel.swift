@@ -12,8 +12,8 @@ final class TopicViewCellViewModel {
     
     // MARK: - Public properties
     
-    let imageName: String
-    let colorForTitle: UIColor
+    private let imageName: String
+    private let colorForTitle: UIColor
     
     // MARK: - Inits
     

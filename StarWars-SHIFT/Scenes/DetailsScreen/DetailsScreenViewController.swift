@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailsScreenViewController: UIViewController {
+final class DetailsScreenViewController: UIViewController {
     
     // MARK: - Private properties
     
@@ -272,7 +272,7 @@ class DetailsScreenViewController: UIViewController {
 // MARK: - Building ViewModel
 
 private extension DetailsScreenViewController {
-    private func bindToViewModel() {
+    func bindToViewModel() {
         viewModel.showModalWithDetails = { [weak self] modalWindow in
             self?.present(modalWindow, animated: true)
             let rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self?.closeDetailsModal))

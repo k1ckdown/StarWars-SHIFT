@@ -7,29 +7,25 @@
 
 import UIKit
 
-class ShowTopicViewController: UIViewController {
+final class ShowTopicViewController: UIViewController {
     
     // MARK: - Private properties
-
+    
+    private let loadingIndicator = UIActivityIndicatorView()
     lazy private var contentCollection: UICollectionView = {
         let layout = ContentLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         return collectionView
     }()
     
-    private let loadingIndicator = UIActivityIndicatorView()
-    
-    private let dataSource: ContentCollectionDataSource
-    private let delegate: ContentCollectionDelegate
-    
     private let viewModel: ShowTopicViewModel
+    private let dataSource: ShowTopicDataSource
     
     // MARK: - Inits
     
     init(viewModel: ShowTopicViewModel) {
         self.viewModel = viewModel
-        dataSource = ContentCollectionDataSource(viewModel: viewModel)
-        delegate = ContentCollectionDelegate(viewModel: viewModel)
+        dataSource = .init(viewModel: viewModel)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -44,6 +40,7 @@ class ShowTopicViewController: UIViewController {
         self.navigationItem.title = viewModel.getNameTopic()
 
         setup()
+        dataSource.configure(with: contentCollection)
         bindToViewModel()
     }
     
@@ -68,10 +65,6 @@ class ShowTopicViewController: UIViewController {
     private func setupContentCollection() {
         view.addSubview(contentCollection)
         
-        contentCollection.register(ContentViewCell.self, forCellWithReuseIdentifier: ContentViewCell.identifier)
-        contentCollection.register(LoadingReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: LoadingReusableView.identifier)
-        contentCollection.dataSource = dataSource
-        contentCollection.delegate = delegate
         contentCollection.showsVerticalScrollIndicator = false
         contentCollection.backgroundColor = .clear
         contentCollection.clipsToBounds = true
@@ -101,7 +94,7 @@ class ShowTopicViewController: UIViewController {
 // MARK: - Building ViewModel
 
 private extension ShowTopicViewController {
-    private func bindToViewModel() {
+    func bindToViewModel() {
         viewModel.updateCollectionData = { [weak self] in
             self?.contentCollection.reloadData()
             self?.loadingIndicator.stopAnimating()

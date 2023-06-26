@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TopicLayout: UICollectionViewFlowLayout {
+final class TopicLayout: UICollectionViewFlowLayout {
     
     override func prepare() {
         super.prepare()
