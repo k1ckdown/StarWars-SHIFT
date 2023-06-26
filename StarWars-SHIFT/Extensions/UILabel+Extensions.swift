@@ -1,5 +1,5 @@
 //
-//  UILabel.swift
+//  UILabel+Extensions.swift
 //  StarWars-SHIFT
 //
 //  Created by Ivan Semenov on 03.02.2023.

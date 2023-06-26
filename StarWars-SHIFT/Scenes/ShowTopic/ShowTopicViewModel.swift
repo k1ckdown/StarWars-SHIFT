@@ -18,17 +18,23 @@ final class ShowTopicViewModel {
     var stopLoadingIndicator: (() -> Void)?
     var showReceivedError: ((String) -> Void)?
     
-    var cellViewModels: [ContentViewCellViewModel] = []
-    
     // MARK: - Private properties
+    
+    private var detailsItems: [DetailsScreenViewModelData] = []
+    private(set) var cellViewModels: [ContentViewCellViewModel] = []
     
     private var content: [ContentViewCellViewModelData] = [] {
         didSet {
-            self.cellViewModels = self.content.map { ContentViewCellViewModel.init(name: $0.name.filter { $0 != "/" }, subTitle: $0.subTitle, shouldShowSubTitle: $0.shouldShowSubTitle) }
-            self.updateCollectionData?()
+            cellViewModels = content.map {
+                ContentViewCellViewModel(
+                    name: $0.name.filter { $0 != "/" },
+                    subTitle: $0.subTitle,
+                    shouldShowSubTitle: $0.shouldShowSubTitle
+                )
+            }
+            updateCollectionData?()
         }
     }
-    private var detailsItems: [DetailsScreenViewModelData] = []
     
     private let topic: Topics
     private var nameTopic: String

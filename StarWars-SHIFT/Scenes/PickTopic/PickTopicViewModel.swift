@@ -14,11 +14,10 @@ final class PickTopicViewModel {
     
     var goToShowTopicScreen: ((UIViewController) -> Void)?
     
-    let cellViewModels: [TopicViewCellViewModel]
-    
     // MARK: - Private properties
     
     private var topics = Topics.allCases
+    private(set) var cellViewModels: [TopicViewCellViewModel]
     
     // MARK: - Inits
     

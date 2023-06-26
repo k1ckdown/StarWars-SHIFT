@@ -17,9 +17,9 @@ final class ContentViewCellViewModel: ContentViewCellViewModelData {
     
     // MARK: - Public properties
     
-    let name: String
-    let subTitle: String
-    var shouldShowSubTitle: Bool
+    private(set) var name: String
+    private(set) var subTitle: String
+    private(set) var shouldShowSubTitle: Bool
     
     // MARK: - Inits
     
