@@ -42,7 +42,7 @@ extension Starship: ContentViewCellViewModelData {
     var shouldShowSubTitle: Bool { false }
 }
 
-extension Starship: DetailsScreenViewModelData {
+extension Starship: DetailsViewModelData {
     var details: String {
         """
         Model: \(model)

@@ -37,7 +37,7 @@ extension Film: ContentViewCellViewModelData {
     var shouldShowSubTitle: Bool { true }
 }
 
-extension Film: DetailsScreenViewModelData {
+extension Film: DetailsViewModelData {
     var details: String {
         """
         Date Created: \(releaseDate)

@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "Single Trooper Aerial Platform 2.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "Single Trooper Aerial Platform.jpg",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "Single Trooper Aerial Platform 1.jpg",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

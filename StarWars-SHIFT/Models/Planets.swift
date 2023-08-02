@@ -36,7 +36,7 @@ extension Planet: ContentViewCellViewModelData {
     var shouldShowSubTitle: Bool { false }
 }
 
-extension Planet: DetailsScreenViewModelData {
+extension Planet: DetailsViewModelData {
     var details: String {
         """
         Population: \(population)

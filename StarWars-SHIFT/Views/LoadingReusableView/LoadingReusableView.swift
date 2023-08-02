@@ -7,13 +7,11 @@
 
 import UIKit
 
-final class LoadingReusableView: UICollectionReusableView {
+final class LoadingReusableView: UICollectionReusableView , ReuseIdentifier {
     
-    static let identifier = "LoadingReusableView"
-    
-    // MARK: - Public properties
+    // MARK: - Private properties
         
-    let activityIndicator = UIActivityIndicatorView()
+    private let loadingIndicatorView = LoadingIndicatorView()
     
     // MARK: - Inits
     
@@ -26,15 +24,24 @@ final class LoadingReusableView: UICollectionReusableView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Public methods
+    
+    func start() {
+        loadingIndicatorView.startAnimating()
+    }
+    
+    func stop() {
+        loadingIndicatorView.stopAnimating()
+    }
+    
     //  MARK: - Setup
     
     private func setup() {
-        backgroundColor = .clear
-        addSubview(activityIndicator)
+        addSubview(loadingIndicatorView)
         
-        activityIndicator.color = .appYellow
+        loadingIndicatorView.style = .medium
         
-        activityIndicator.snp.makeConstraints { make in
+        loadingIndicatorView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalToSuperview().offset(20)
         }

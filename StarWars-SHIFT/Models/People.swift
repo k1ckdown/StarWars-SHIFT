@@ -45,7 +45,7 @@ extension People: ContentViewCellViewModelData {
     var shouldShowSubTitle: Bool { true }
 }
 
-extension People: DetailsScreenViewModelData {
+extension People: DetailsViewModelData {
     var details: String {
         """
         Birth Year: \(birthYear)

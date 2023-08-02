@@ -39,7 +39,7 @@ extension Vehicle: ContentViewCellViewModelData {
     var shouldShowSubTitle: Bool { false }
 }
 
-extension Vehicle: DetailsScreenViewModelData {
+extension Vehicle: DetailsViewModelData {
     var details: String {
         """
         Model: \(model)

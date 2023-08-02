@@ -45,7 +45,7 @@ extension Species: ContentViewCellViewModelData {
     var shouldShowSubTitle: Bool { false }
 }
 
-extension Species: DetailsScreenViewModelData {
+extension Species: DetailsViewModelData {
     var details: String {
         """
         Classification: \(classification)
