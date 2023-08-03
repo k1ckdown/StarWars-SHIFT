@@ -12,17 +12,10 @@ extension UIImage {
     enum AppImage: String {
         case space
         case starWars
-    }
-    
-    enum SystemImage: String {
-        case rightArrow = "right-arrow"
+        case rightArrow
     }
     
     convenience init?(_ image: AppImage) {
         self.init(named: image.rawValue)
-    }
-    
-    convenience init?(_ systemImage: SystemImage) {
-        self.init(systemName: systemImage.rawValue)
     }
 }
