@@ -9,11 +9,7 @@ import Foundation
 
 final class APIService {
     
-    static let shared = APIService()
-    
     private let apiManager = APIManager()
-    
-    private init() {}
     
     func getTopic<T: Decodable>(endpoint: EndPointItems, page: Int, completionHandler: @escaping (Result<T, Error>) -> Void) {
         let query = TopicContentQuery(page: page)

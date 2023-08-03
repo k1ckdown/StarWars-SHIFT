@@ -1,5 +1,5 @@
 //
-//  Films.swift
+//  Film.swift
 //  StarWars-SHIFT
 //
 //  Created by Ivan Semenov on 04.02.2023.
@@ -7,29 +7,12 @@
 
 import Foundation
 
-struct Film: Codable {
+struct Film {
     let name: String
     let episodeID: Int
+    let url, created, edited: String
     let openingCrawl, director, producer, releaseDate: String
-    let characters, planets, starships, vehicles: [String]
-    let species: [String]
-    let created, edited: String
-    let url: String
-
-    enum CodingKeys: String, CodingKey {
-        case name = "title"
-        case episodeID = "episode_id"
-        case openingCrawl = "opening_crawl"
-        case director, producer
-        case releaseDate = "release_date"
-        case characters, planets, starships, vehicles, species, created, edited, url
-    }
-}
-
-struct FilmsResponse: Codable {
-    let count: Int
-    let next: String?
-    let results: [Film]
+    let characters, planets, starships, species, vehicles: [String]
 }
 
 extension Film: ContentViewCellViewModelData {

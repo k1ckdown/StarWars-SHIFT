@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit
 
 enum TopicType: String, CaseIterable {
     case characters

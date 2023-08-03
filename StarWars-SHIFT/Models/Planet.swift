@@ -1,5 +1,5 @@
 //
-//  Planets.swift
+//  Planet.swift
 //  StarWars-SHIFT
 //
 //  Created by Ivan Semenov on 04.02.2023.
@@ -7,28 +7,12 @@
 
 import Foundation
 
-struct Planet: Codable {
+struct Planet {
     let name, rotationPeriod, orbitalPeriod, diameter: String
     let climate, gravity, terrain, surfaceWater: String
     let population: String
     let residents, films: [String]
-    let created, edited: String
-    let url: String
-
-    enum CodingKeys: String, CodingKey {
-        case name
-        case rotationPeriod = "rotation_period"
-        case orbitalPeriod = "orbital_period"
-        case diameter, climate, gravity, terrain
-        case surfaceWater = "surface_water"
-        case population, residents, films, created, edited, url
-    }
-}
-
-struct PlanetsResponse: Codable {
-    let count: Int
-    let next: String?
-    let results: [Planet]
+    let url, created, edited: String
 }
 
 extension Planet: ContentViewCellViewModelData {

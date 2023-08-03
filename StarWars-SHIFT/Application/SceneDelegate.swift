@@ -18,7 +18,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         self.window = window
         
-        self.appCoordinator = .init(window: window)
+        let dependencyContainer = DependencyContainer()
+        self.appCoordinator = .init(window: window, dependencyContainer: dependencyContainer)
         appCoordinator?.start()
     }
 }

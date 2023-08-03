@@ -8,6 +8,7 @@
 import Foundation
 
 final class DetailsViewModel {
+    typealias Factory = GuideItemsRepositoryFactory
     
     // MARK: - Public properties
     
@@ -45,23 +46,26 @@ final class DetailsViewModel {
     
     // MARK: - Private properties
     
+    private let factory: Factory
+    
     private let isOptional: Bool
     private let detailsData: DetailsViewModelData
     private var speciesItem: DetailsViewModelData?
     private var homeworldItem: DetailsViewModelData? {
         didSet {
-            updateDetailsData?(speciesName, homeworldName)
+            updateDetailsData?(speciesItem?.name ?? "unknown",
+                               homeworldItem?.name ?? "unknown")
         }
     }
     
-    private var speciesName = "unknown"
-    private var homeworldName = "unknown"
+    private lazy var guideItemsRepository = factory.makeGuideItemsRepository()
     
     // MARK: - Init
     
-    init(detailsData: DetailsViewModelData, isOptional: Bool) {
-        self.detailsData = detailsData
+    init(factory: Factory, detailsData: DetailsViewModelData, isOptional: Bool) {
+        self.factory = factory
         self.isOptional = isOptional
+        self.detailsData = detailsData
     }
     
 }
@@ -116,11 +120,10 @@ private extension DetailsViewModel {
     func getSpecies() {
         guard let speciesURL = detailsData.speciesURL?.first else { return }
         
-        APIService.shared.getContentDetails(urlString: speciesURL) { (result: Result<Species, Error>) in
+        guideItemsRepository.getSpeciesDetails(speciesURL) { result in
             switch result {
-            case .success(let species):
-                self.speciesName = species.name
-                self.speciesItem = species
+            case .success(let value):
+                self.speciesItem = value.toSpecies()
             case .failure(let error):
                 self.showReceivedError?(error.localizedDescription)
             }
@@ -130,11 +133,10 @@ private extension DetailsViewModel {
     func getHomeworld() {
         guard let homeworldURL = detailsData.homeworldURL else { return }
         
-        APIService.shared.getContentDetails(urlString: homeworldURL) { (result: Result<Planet, Error>) in
+        guideItemsRepository.getHomeworldDetails(homeworldURL) { result in
             switch result {
-            case .success(let planet):
-                self.homeworldName = planet.name
-                self.homeworldItem = planet
+            case .success(let value):
+                self.homeworldItem = value.toPlanet()
             case .failure(let error):
                 self.showReceivedError?(error.localizedDescription)
             }

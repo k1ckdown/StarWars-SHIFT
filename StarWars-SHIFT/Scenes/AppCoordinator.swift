@@ -10,9 +10,9 @@ import UIKit
 final class AppCoordinator: BaseCoordinator {
     private let window: UIWindow
     
-    init(window: UIWindow) {
+    init(window: UIWindow, dependencyContainer: DependencyContainer) {
         self.window = window
-        super.init(navigationController: .init())
+        super.init(navigationController: .init(), dependencyContainer: dependencyContainer)
     }
     
     override func start() {
@@ -27,7 +27,7 @@ final class AppCoordinator: BaseCoordinator {
 private extension AppCoordinator {
     
     func showStartScene() {
-        let startCoordinator = StartCoordinator(navigationController: navigationController)
+        let startCoordinator = StartCoordinator(navigationController: navigationController, dependencyContainer: dependencyContainer)
         coordinate(to: startCoordinator)
     }
     

@@ -9,10 +9,12 @@ import UIKit
 
 class BaseCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
+    private(set) var dependencyContainer: DependencyContainer
     private(set) var navigationController: UINavigationController
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, dependencyContainer: DependencyContainer) {
         self.navigationController = navigationController
+        self.dependencyContainer = dependencyContainer
     }
     
     func start() {

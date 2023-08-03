@@ -9,10 +9,6 @@ import UIKit
 
 final class StartCoordinator: BaseCoordinator {
     
-    override init(navigationController: UINavigationController) {
-        super.init(navigationController: navigationController)
-    }
-    
     override func start() {
         let viewModel = StartViewModel()
         let viewController = StartViewController(with: viewModel)
@@ -26,10 +22,12 @@ final class StartCoordinator: BaseCoordinator {
     
 }
 
+// MARK: - Navigation
+
 private extension StartCoordinator {
     
     func showPickTopicScene() {
-        let pickTopicCoordinator = PickTopicCoordinator(navigationController: navigationController)
+        let pickTopicCoordinator = PickTopicCoordinator(navigationController: navigationController, dependencyContainer: dependencyContainer)
         coordinate(to: pickTopicCoordinator)
     }
     

@@ -8,6 +8,7 @@
 import Foundation
 
 final class ContentListViewModel {
+    typealias Factory = GuideItemsRepositoryFactory
     
     // MARK: - Public properties
     
@@ -18,15 +19,22 @@ final class ContentListViewModel {
     var showReceivedError: ((String) -> Void)?
     var didGoToDetailsScene: ((DetailsViewModelData) -> Void)?
     
+    var nameTopic: String {
+        topic.name.capitalized
+    }
+    
     private(set) var isLoading = false
     private(set) var cellViewModels = [ContentViewCellViewModel]()
     
     // MARK: - Private properties
 
+    private let factory: Factory
+    
     private var currentPage = 1
     private var isLastPage = false
     
     private let topic: TopicType
+    private lazy var guideItemsRepository = factory.makeGuideItemsRepository()
     
     private var detailsItems = [DetailsViewModelData]()
     private var contentItems = [ContentViewCellViewModelData]() {
@@ -44,8 +52,9 @@ final class ContentListViewModel {
     
     // MARK: - Init
     
-    init(topic: TopicType) {
+    init(factory: Factory, topic: TopicType) {
         self.topic = topic
+        self.factory = factory
     }
     
 }
@@ -56,10 +65,6 @@ extension ContentListViewModel {
     
     func viewDidLoad() {
         getTopicContent()
-    }
-    
-    func getNameTopic() -> String {
-        topic.name.capitalized
     }
     
     func moveToDetails(at index: Int) {
@@ -82,7 +87,10 @@ extension ContentListViewModel {
 
 private extension ContentListViewModel {
     
-    func checkIsLastPage(_ page: String?) {
+    func didFetchPage(_ page: String?) {
+        isLoading = false
+        currentPage += 1
+        
         if page == nil {
             isLastPage = true
         }
@@ -94,110 +102,92 @@ private extension ContentListViewModel {
         isLoading = true
         switch topic {
         case .characters:
-            getPeople()
+            fetchPeople()
         case .films:
-            getFilms()
+            fetchFilms()
         case .starships:
-            getStarships()
+            fetchStarships()
         case .vehicles:
-            getVehicles()
+            fetchVehicles()
         case .planets:
-            getPlanets()
+            fetchPlanets()
         case .species:
-            getSpecies()
+            fetchSpecies()
         }
     }
     
-    func getPeople() {
-        APIService.shared.getTopic(endpoint: EndPointItems.people, page: currentPage) { (result: Result<PeopleResponse, Error>) in
+    func fetchPeople() {
+        guideItemsRepository.getCharacters(currentPage) { result in
             switch result {
-            case .success(let people):
-                self.isLoading = false
-                self.contentItems.append(contentsOf: people.results)
-                self.detailsItems.append(contentsOf: people.results)
-                
-                self.currentPage += 1
-                self.checkIsLastPage(people.next)
+            case .success(let value):
+                self.didFetchPage(value.next)
+                self.contentItems.append(contentsOf: value.results.map { $0.toСharacter() })
+                self.detailsItems.append(contentsOf: value.results.map { $0.toСharacter() })
             case .failure(let error):
                 self.showReceivedError?(error.localizedDescription)
             }
         }
     }
     
-    func getFilms() {
-        APIService.shared.getTopic(endpoint: EndPointItems.films, page: currentPage) { (result: Result<FilmsResponse, Error>) in
+    func fetchFilms() {
+        guideItemsRepository.getFilms(currentPage) { result in
             switch result {
-            case .success(let films):
-                self.isLoading = false
-                self.contentItems.append(contentsOf: films.results)
-                self.detailsItems.append(contentsOf: films.results)
-                
-                self.currentPage += 1
-                self.checkIsLastPage(films.next)
+            case .success(let value):
+                self.didFetchPage(value.next)
+                self.contentItems.append(contentsOf: value.results.map { $0.toFilm() })
+                self.detailsItems.append(contentsOf: value.results.map { $0.toFilm() })
             case .failure(let error):
                 self.showReceivedError?(error.localizedDescription)
             }
         }
     }
     
-    func getStarships() {
-        APIService.shared.getTopic(endpoint: EndPointItems.starships, page: currentPage) { (result: Result<StarshipsResponse, Error>) in
+    func fetchStarships() {
+        guideItemsRepository.getStarships(currentPage) { result in
             switch result {
-            case .success(let starships):
-                self.isLoading = false
-                self.contentItems.append(contentsOf: starships.results)
-                self.detailsItems.append(contentsOf: starships.results)
-                
-                self.currentPage += 1
-                self.checkIsLastPage(starships.next)
+            case .success(let value):
+                self.didFetchPage(value.next)
+                self.contentItems.append(contentsOf: value.results.map { $0.toStarship() })
+                self.detailsItems.append(contentsOf: value.results.map { $0.toStarship() })
             case .failure(let error):
                 self.showReceivedError?(error.localizedDescription)
             }
         }
     }
     
-    func getVehicles() {
-        APIService.shared.getTopic(endpoint: EndPointItems.vehicles, page: currentPage) { (result: Result<VehiclesResponse, Error>) in
+    func fetchVehicles() {
+        guideItemsRepository.getVehicles(currentPage) { result in
             switch result {
-            case .success(let vehicles):
-                self.isLoading = false
-                self.contentItems.append(contentsOf: vehicles.results)
-                self.detailsItems.append(contentsOf: vehicles.results)
-                
-                self.currentPage += 1
-                self.checkIsLastPage(vehicles.next)
+            case .success(let value):
+                self.didFetchPage(value.next)
+                self.contentItems.append(contentsOf: value.results.map { $0.toVehicle() })
+                self.detailsItems.append(contentsOf: value.results.map { $0.toVehicle() })
             case .failure(let error):
                 self.showReceivedError?(error.localizedDescription)
             }
         }
     }
     
-    func getPlanets() {
-        APIService.shared.getTopic(endpoint: EndPointItems.planets, page: currentPage) { (result: Result<PlanetsResponse, Error>) in
+    func fetchPlanets() {
+        guideItemsRepository.getPlanets(currentPage) { result in
             switch result {
-            case .success(let planets):
-                self.isLoading = false
-                self.contentItems.append(contentsOf: planets.results)
-                self.detailsItems.append(contentsOf: planets.results)
-                
-                self.currentPage += 1
-                self.checkIsLastPage(planets.next)
+            case .success(let value):
+                self.didFetchPage(value.next)
+                self.contentItems.append(contentsOf: value.results.map { $0.toPlanet() })
+                self.detailsItems.append(contentsOf: value.results.map { $0.toPlanet() })
             case .failure(let error):
                 self.showReceivedError?(error.localizedDescription)
             }
         }
     }
     
-    func getSpecies() {
-        APIService.shared.getTopic(endpoint: EndPointItems.species, page: currentPage) { (result: Result<SpeciesResponse, Error>) in
+    func fetchSpecies() {
+        guideItemsRepository.getSpecies(currentPage) { result in
             switch result {
-            case .success(let species):
-                self.isLoading = false
-                self.contentItems.append(contentsOf: species.results)
-                self.detailsItems.append(contentsOf: species.results)
-                
-                self.currentPage += 1
-                self.checkIsLastPage(species.next)
+            case .success(let value):
+                self.didFetchPage(value.next)
+                self.contentItems.append(contentsOf: value.results.map { $0.toSpecies() })
+                self.detailsItems.append(contentsOf: value.results.map { $0.toSpecies() })
             case .failure(let error):
                 self.showReceivedError?(error.localizedDescription)
             }

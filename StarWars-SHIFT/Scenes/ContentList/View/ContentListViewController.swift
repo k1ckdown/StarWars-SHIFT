@@ -37,7 +37,7 @@ final class ContentListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = viewModel.getNameTopic()
+        self.navigationItem.title = viewModel.nameTopic
 
         setup()
         dataSource.configure(with: contentCollection)
@@ -86,9 +86,9 @@ final class ContentListViewController: UIViewController {
     }
     
     private func setupBackBarButtonItem() {
-        let backBarButtonItem = UIBarButtonItem(title: viewModel.getNameTopic(), style: .plain, target: self, action: nil)
+        let backBarButtonItem = UIBarButtonItem(title: viewModel.nameTopic, style: .plain, target: self, action: nil)
         backBarButtonItem.tintColor = .appYellow
-        self.navigationItem.backBarButtonItem = backBarButtonItem
+        navigationItem.backBarButtonItem = backBarButtonItem
     }
 }
 
