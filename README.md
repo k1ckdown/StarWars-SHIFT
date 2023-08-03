@@ -6,7 +6,8 @@
 * UIKit
 * SnapKit
 * Alamofire
-* MVVM
+* Dependency injection
+* MVVM-C Architecture
 
 ## Screenshots
 
