@@ -64,7 +64,7 @@ final class StartViewController: UIViewController {
     private func setupMainImageView() {
         view.addSubview(mainImageView)
         
-        mainImageView.image = UIImage(named: "StarWars")
+        mainImageView.image = UIImage(.starWars)
         mainImageView.contentMode = .scaleAspectFit
         
         mainImageView.snp.makeConstraints { make in
@@ -77,7 +77,7 @@ final class StartViewController: UIViewController {
     private func setupContinueButton() {
         view.addSubview(continueButton)
         
-        continueButton.setImage(UIImage(named: "right-arrow"), for: .normal)
+        continueButton.setImage(UIImage(.rightArrow), for: .normal)
         continueButton.tintColor = .black
         continueButton.backgroundColor = .appYellow
         continueButton.layer.cornerRadius = 30

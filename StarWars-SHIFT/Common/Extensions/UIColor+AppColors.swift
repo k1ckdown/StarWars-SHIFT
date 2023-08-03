@@ -20,5 +20,5 @@ extension UIColor {
     static let titleVehicles = UIColor(named: "titleVehicles")
     static let titleStarships = UIColor(named: "titleStarships")
     
-    static let spaceBackground = UIColor(patternImage: UIImage(named: "space") ?? .init())
+    static let spaceBackground = UIColor(patternImage: UIImage(.space) ?? .init())
 }
